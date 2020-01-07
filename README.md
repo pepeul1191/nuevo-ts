@@ -29,3 +29,4 @@ Fuentes:
 + https://github.com/pepeul1191/react-aprendiendo-2
 + https://www.npmjs.com/package/ts-node?activeTab=readme
 + https://alligator.io/typescript/running-typescript-ts-node/
++ https://github.com/pepeul1191/ionic-gps

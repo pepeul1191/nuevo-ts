@@ -1,10 +1,11 @@
-import { demo } from './configs/bootstrap';
+import express from "express";
 
-var myName: string = 'pepis';
-var myAge:number = 31;
-var canVote:boolean = true;
-var anything:any = 'kiki'
-anything = 2;
+const app: express.Application = express();
 
-console.log(`myAge + ${canVote} + ${demo}`);
-1+1
+app.get('/', function (req, res) {
+  res.send('Hello World!');
+});
+
+app.listen(3000, function () {
+  console.log('Example app listening on port 3000!');
+});

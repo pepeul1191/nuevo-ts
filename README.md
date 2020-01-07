@@ -22,6 +22,10 @@ Video Tutorial:
 
     https://www.youtube.com/watch?v=-PR_XqW9JJU
 
+Tutorial Express - Typscript:
+
+    https://dev.to/aligoren/developing-an-express-application-using-typescript-3b1
+
 ---
 
 Fuentes:

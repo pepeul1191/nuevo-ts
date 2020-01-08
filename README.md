@@ -22,9 +22,13 @@ Video Tutorial:
 
     https://www.youtube.com/watch?v=-PR_XqW9JJU
 
-Tutorial Express - Typscript:
+Tutorial Express - Typescript:
 
     https://dev.to/aligoren/developing-an-express-application-using-typescript-3b1
+
+Tutorial Sequelize - Typescript:
+
+    https://github.com/RobinBuschmann/sequelize-typescript-example
 
 ---
 

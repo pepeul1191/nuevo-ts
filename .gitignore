@@ -17,3 +17,4 @@ dist
 *.ods#
 public/uploads
 public/templates
+*.db

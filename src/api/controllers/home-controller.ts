@@ -2,6 +2,7 @@ import * as express from 'express'
 import { Request, Response } from 'express'
 import sessionTrueMiddleware from '../middlewares/session-true'
 import IControllerBase from '../interfaces/controller-base'
+import { loadCss, loadJs } from '../helpers/view'
 
 class HomeController implements IControllerBase {
   public path = '/'
@@ -30,7 +31,16 @@ class HomeController implements IControllerBase {
         name: 'Ahmet'
       }
     ]
-    res.render('home/index', { users })
+    let locals = {
+      title: 'Inicio',
+      csss: loadCss([
+        'assets/css/styles',
+      ]), 
+      jss: loadJs([
+        'assets/js/app',
+      ]), 
+    }
+    res.render('home/index', locals)
   }
 }
 

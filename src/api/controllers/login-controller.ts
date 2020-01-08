@@ -6,7 +6,7 @@ import { loadCss, loadJs } from '../helpers/view'
 import { constants } from '../../configs/constants'
 
 class LoginController implements IControllerBase {
-  public path = '/'
+  public path = '/login'
   public router = express.Router()
 
   constructor() {
@@ -14,8 +14,8 @@ class LoginController implements IControllerBase {
   }
 
   public initRoutes() {
-    this.router.get('/login', sessionFalseMiddleware ,this.index)
-    this.router.post('/login/access', sessionFalseMiddleware ,this.access)
+    this.router.get('/', sessionFalseMiddleware ,this.index)
+    this.router.post('/access', sessionFalseMiddleware ,this.access)
   }
 
   index = (req: Request, res: Response) => {

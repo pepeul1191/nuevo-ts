@@ -4,7 +4,7 @@ import sessionTrueMiddleware from '../middlewares/session-true'
 import IControllerBase from '../interfaces/controller-base'
 
 class ErrorController implements IControllerBase {
-  public path = '/'
+  public path = '/error'
   public router = express.Router()
 
   constructor() {
@@ -12,7 +12,7 @@ class ErrorController implements IControllerBase {
   }
 
   public initRoutes() {
-    this.router.get('/error/access/:number', sessionTrueMiddleware ,this.index)
+    this.router.get('/access/:number', sessionTrueMiddleware ,this.index)
   }
 
   index = (req: Request, res: Response) => {

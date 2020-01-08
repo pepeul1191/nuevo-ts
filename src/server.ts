@@ -1,16 +1,11 @@
 import App from './configs/app'
-
 import * as bodyParser from 'body-parser'
 import loggerMiddleware from './api/middlewares/logger'
-// import PostsController from './controllers/posts/posts.controller'
-import HomeController from './api/controllers/home-controller'
+import { controllers } from './configs/bootstrap'
 
 const app = new App({
   port: 5000,
-  controllers: [
-    new HomeController(),
-    //new PostsController()
-  ],
+  controllers: controllers,
   middleWares: [
     bodyParser.json(),
     bodyParser.urlencoded({ 

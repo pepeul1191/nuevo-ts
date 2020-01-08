@@ -15,9 +15,24 @@ class HomeController implements IControllerBase {
 
   public initRoutes() {
     this.router.get('/', sessionTrueMiddleware ,this.index)
+    this.router.get('/rest', sessionTrueMiddleware ,this.rest)
   }
 
   index = (req: Request, res: Response) => {
+    let locals = {
+      title: 'Inicio',
+      constants: constants,
+      csss: loadCss([
+        'assets/css/styles',
+      ]), 
+      jss: loadJs([
+        'assets/js/app',
+      ]), 
+    }
+    res.status(200).render('home/index', locals)
+  }
+
+  rest = (req: Request, res: Response) => {
     const users = [
       {
         id: 1,
@@ -32,17 +47,7 @@ class HomeController implements IControllerBase {
         name: 'Ahmet'
       }
     ]
-    let locals = {
-      title: 'Inicio',
-      constants: constants,
-      csss: loadCss([
-        'assets/css/styles',
-      ]), 
-      jss: loadJs([
-        'assets/js/app',
-      ]), 
-    }
-    res.render('home/index', locals)
+    res.status(200).send(JSON.stringify(users))
   }
 }
 

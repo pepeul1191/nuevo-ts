@@ -1,5 +1,6 @@
 import * as express from 'express'
 import { Request, Response } from 'express'
+import sessionTrueMiddleware from '../middlewares/session-true'
 import IControllerBase from '../interfaces/controller-base'
 
 class HomeController implements IControllerBase {
@@ -11,7 +12,7 @@ class HomeController implements IControllerBase {
   }
 
   public initRoutes() {
-    this.router.get('/', this.index)
+    this.router.get('/', sessionTrueMiddleware ,this.index)
   }
 
   index = (req: Request, res: Response) => {

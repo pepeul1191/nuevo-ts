@@ -1,5 +1,6 @@
 import * as express from 'express'
 import { Application } from 'express'
+import error404 from '../api/middlewares/error-404'
 
 class App {
   public app: Application
@@ -12,11 +13,12 @@ class App {
     this.routes(appInit.controllers)
     this.assets()
     this.template()
+    this.errorHandler()
   }
 
   private middlewares(middleWares: { forEach: (arg0: (middleWare: any) => void) => void; }) {
     middleWares.forEach(middleWare => {
-    this.app.use(middleWare)
+      this.app.use(middleWare)
     })
   }
 
@@ -33,6 +35,10 @@ class App {
 
   private template() {
     this.app.set('view engine', 'ejs')
+  }
+
+  private errorHandler(){
+    this.app.use(error404())
   }
 
   public listen() {

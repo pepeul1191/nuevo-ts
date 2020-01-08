@@ -3,6 +3,7 @@ import { Request, Response } from 'express'
 import sessionTrueMiddleware from '../middlewares/session-true'
 import IControllerBase from '../interfaces/controller-base'
 import { loadCss, loadJs } from '../helpers/view'
+import { constants } from '../../configs/constants'
 
 class HomeController implements IControllerBase {
   public path = '/'
@@ -33,6 +34,7 @@ class HomeController implements IControllerBase {
     ]
     let locals = {
       title: 'Inicio',
+      constants: constants,
       csss: loadCss([
         'assets/css/styles',
       ]), 

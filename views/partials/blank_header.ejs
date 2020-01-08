@@ -12,7 +12,10 @@
     <%- csss %>
     <!-- Fin CSS-->
     <script type="text/javascript">
-
+      var BASE_URL = '<%= constants.baseURL %>';
+      var STATICS_URL  = '<%= constants.staticURL %>';
+      var CSRF = "<%= constants.csrf.secret %>";
+      var CSRF_KEY = "<%= constants.csrf.key %>";
     </script>
   </head>
   <body>

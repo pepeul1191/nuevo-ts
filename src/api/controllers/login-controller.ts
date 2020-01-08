@@ -15,6 +15,7 @@ class LoginController implements IControllerBase {
 
   public initRoutes() {
     this.router.get('/login', sessionFalseMiddleware ,this.index)
+    this.router.post('/login/access', sessionFalseMiddleware ,this.access)
   }
 
   index = (req: Request, res: Response) => {
@@ -30,6 +31,27 @@ class LoginController implements IControllerBase {
       jss: loadJs([]), 
     }
     res.status(200).render('login/index', locals)
+  }
+
+  access = (req: Request, res: Response) => {
+    let user = req.body.user
+    let password = req.body.password
+    if(user == 'admin' && password == 'ulima'){
+      res.redirect('/')
+    }else{
+      let locals = {
+        title: 'Bienvenido',
+        constants: constants,
+        message_color: 'text-danger',
+        message: 'Usuario y/o contraseña no válidos',
+        csss: loadCss([
+          'assets/css/styles',
+          'assets/css/login',
+        ]), 
+        jss: loadJs([]), 
+      }
+      res.status(200).render('login/index', locals)
+    }
   }
 }
 

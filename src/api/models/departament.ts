@@ -1,7 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm'
 
 @Entity({
-  name: 'departments', 
+  name: 'departmentss', 
   synchronize: false,
 })
 export class Department {

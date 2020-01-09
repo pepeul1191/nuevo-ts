@@ -17,7 +17,7 @@ class HomeController implements IControllerBase {
 
   public initRoutes() {
     this.router.get('/', sessionTrueMiddleware, this.index)
-    this.router.get('/rest', sessionTrueMiddleware, this.rest)
+    this.router.get('/rest', sessionTrueMiddleware,  this.rest)
   }
 
   index = (req: Request, res: Response) => {
@@ -34,18 +34,19 @@ class HomeController implements IControllerBase {
     res.status(200).render('home/index', locals)
   }
 
-  rest = (req: Request, res: Response) => {
+  rest = async (req: Request, res: Response) => {
     let resp:any
-    createConnection().then(async connection => {
-      //console.log(connection)
-      let departmentRepository = connection.getRepository(Department)
-      resp = await departmentRepository.find();
-      res.status(200).send(JSON.stringify(resp))
-    }).catch(error => {
-      console.log("Error: ", error)
-      res.status(400).send(error)
-    });
-    
+    let respStatus:number
+    try {
+      let con = await createConnection()
+      let departmentRepository = con.getRepository(Department)
+      resp = await departmentRepository.findOne({name: 'Ancash'})
+      respStatus = 200
+    } catch (err) {
+      respStatus = 500
+      resp = err
+    }
+    res.status(respStatus).send(resp)
   }
 }
 

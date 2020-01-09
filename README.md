@@ -26,9 +26,10 @@ Tutorial Express - Typescript:
 
     https://dev.to/aligoren/developing-an-express-application-using-typescript-3b1
 
-Tutorial Sequelize - Typescript:
+Tutorial TypeORM - Typescript:
 
-    https://github.com/RobinBuschmann/sequelize-typescript-example
+    https://typeorm.io/#/
+    https://github.com/typeorm/typescript-example
 
 ---
 
@@ -38,3 +39,5 @@ Fuentes:
 + https://www.npmjs.com/package/ts-node?activeTab=readme
 + https://alligator.io/typescript/running-typescript-ts-node/
 + https://github.com/pepeul1191/ionic-gps
++ https://github.com/typeorm/typeorm/blob/master/docs/connection-options.md
++ https://stackoverflow.com/questions/38271273/experimental-decorators-warning-in-typescript-compilation

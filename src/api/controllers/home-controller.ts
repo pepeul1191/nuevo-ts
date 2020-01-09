@@ -4,6 +4,8 @@ import sessionTrueMiddleware from '../middlewares/session-true'
 import IControllerBase from '../interfaces/controller-base'
 import { loadCss, loadJs } from '../helpers/view'
 import { constants } from '../../configs/constants'
+import {createConnection} from 'typeorm'
+import { Department } from '../models/departament'
 
 class HomeController implements IControllerBase {
   public path = '/'
@@ -14,8 +16,8 @@ class HomeController implements IControllerBase {
   }
 
   public initRoutes() {
-    this.router.get('/', sessionTrueMiddleware ,this.index)
-    this.router.get('/rest', sessionTrueMiddleware ,this.rest)
+    this.router.get('/', sessionTrueMiddleware, this.index)
+    this.router.get('/rest', sessionTrueMiddleware, this.rest)
   }
 
   index = (req: Request, res: Response) => {
@@ -33,21 +35,17 @@ class HomeController implements IControllerBase {
   }
 
   rest = (req: Request, res: Response) => {
-    const users = [
-      {
-        id: 1,
-        name: 'Ali'
-      },
-      {
-        id: 2,
-        name: 'Can'
-      },
-      {
-        id: 3,
-        name: 'Ahmet'
-      }
-    ]
-    res.status(200).send(JSON.stringify(users))
+    let resp:any
+    createConnection().then(async connection => {
+      //console.log(connection)
+      let departmentRepository = connection.getRepository(Department)
+      resp = await departmentRepository.find();
+      res.status(200).send(JSON.stringify(resp))
+    }).catch(error => {
+      console.log("Error: ", error)
+      res.status(400).send(error)
+    });
+    
   }
 }
 

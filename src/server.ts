@@ -1,3 +1,4 @@
+import 'reflect-metadata'
 import App from './configs/app'
 import * as bodyParser from 'body-parser'
 import loggerMiddleware from './api/middlewares/logger'

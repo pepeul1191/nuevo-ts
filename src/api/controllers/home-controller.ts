@@ -4,8 +4,6 @@ import sessionTrueMiddleware from '../middlewares/session-true'
 import IControllerBase from '../interfaces/controller-base'
 import { loadCss, loadJs } from '../helpers/view'
 import { constants } from '../../configs/constants'
-import {createConnection} from 'typeorm'
-import { Department } from '../models/departament'
 
 class HomeController implements IControllerBase {
   public path = '/'
@@ -17,7 +15,6 @@ class HomeController implements IControllerBase {
 
   public initRoutes() {
     this.router.get('/', sessionTrueMiddleware, this.index)
-    this.router.get('/rest', sessionTrueMiddleware,  this.rest)
   }
 
   index = (req: Request, res: Response) => {
@@ -32,21 +29,6 @@ class HomeController implements IControllerBase {
       ]), 
     }
     res.status(200).render('home/index', locals)
-  }
-
-  rest = async (req: Request, res: Response) => {
-    let resp:any
-    let respStatus:number
-    try {
-      let con = await createConnection()
-      let departmentRepository = con.getRepository(Department)
-      resp = await departmentRepository.findOne({name: 'Ancash'})
-      respStatus = 200
-    } catch (err) {
-      respStatus = 500
-      resp = err
-    }
-    res.status(respStatus).send(resp)
   }
 }
 
